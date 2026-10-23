@@ -1,0 +1,76 @@
+.widget-newsletter {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.widget-newsletter .widget-newsletter-intro > :first-child {
+  margin-top: 0;
+}
+
+.widget-newsletter .widget-newsletter-form {
+  margin: 0;
+}
+
+/* visually hidden label (placeholder shows the hint) */
+.widget-newsletter .widget-newsletter-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.widget-newsletter .widget-newsletter-field {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid currentcolor;
+}
+
+.widget-newsletter .widget-newsletter-field input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 16px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.widget-newsletter .widget-newsletter-field input:focus {
+  outline: none;
+}
+
+.widget-newsletter .widget-newsletter-field:focus-within {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.widget-newsletter .widget-newsletter-submit {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.widget-newsletter .widget-newsletter-status {
+  min-height: 1.5em;
+  margin: 8px 0 0;
+  font-size: var(--body-font-size-xs, 14px);
+}
+
+.widget-newsletter .widget-newsletter-status:empty {
+  margin: 0;
+  min-height: 0;
+}
+
+.widget-newsletter .widget-newsletter-form.invalid .widget-newsletter-field {
+  border-color: #d00;
+}

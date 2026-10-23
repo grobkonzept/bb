@@ -1,0 +1,96 @@
+/* structural styles only; visual design comes in the design pass */
+.widget-contact .widget-contact-intro > :first-child {
+  margin-top: 0;
+}
+
+.widget-contact .widget-contact-form {
+  margin: 0;
+}
+
+.widget-contact .widget-contact-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.widget-contact .widget-contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.widget-contact .widget-contact-label {
+  font-size: var(--body-font-size-s, 16px);
+}
+
+.widget-contact .widget-contact-control {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid currentcolor;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.widget-contact textarea.widget-contact-control {
+  resize: vertical;
+}
+
+.widget-contact .widget-contact-control:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.widget-contact .widget-contact-field.invalid .widget-contact-control {
+  border-color: #d00;
+}
+
+.widget-contact .widget-contact-error,
+.widget-contact .widget-contact-status {
+  margin: 0;
+  font-size: var(--body-font-size-xs, 14px);
+}
+
+.widget-contact .widget-contact-status {
+  margin-top: 16px;
+}
+
+.widget-contact .widget-contact-error:empty,
+.widget-contact .widget-contact-status:empty {
+  display: none;
+}
+
+.widget-contact .widget-contact-field.invalid .widget-contact-error,
+.widget-contact .widget-contact-status.error {
+  color: #d00;
+}
+
+.widget-contact .widget-contact-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+
+.widget-contact .widget-contact-submit {
+  margin: 0;
+  cursor: pointer;
+}
+
+.widget-contact .widget-contact-submit:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+@media (width >= 750px) {
+  .widget-contact .widget-contact-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .widget-contact .widget-contact-field-full {
+    grid-column: 1 / -1;
+  }
+}

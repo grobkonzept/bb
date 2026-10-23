@@ -10,6 +10,8 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  toCamelCase,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -56,7 +58,10 @@ async function loadFonts() {
 function buildWidgetAutoBlocks(main) {
   const widgetLinks = [...main.querySelectorAll('a[href*="/widgets/"]')];
   widgetLinks.forEach((link) => {
-    if (link.closest('.widget')) return;
+    // skip links already inside a widget block or a widget-* variant
+    for (let el = link.parentElement; el && el !== main; el = el.parentElement) {
+      if ([...el.classList].some((c) => c === 'widget' || c.startsWith('widget-'))) return;
+    }
     const newLink = link.cloneNode(true);
     const widgetBlock = buildBlock('widget', { elems: [newLink] });
     const p = link.closest('p');
@@ -101,6 +106,33 @@ function buildAutoBlocks(main) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
   }
+}
+
+/**
+ * Applies section-metadata blocks to their parent sections and removes them.
+ * `style` values become section classes, other keys become data attributes.
+ * @param {Element} main The container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section div.section-metadata').forEach((meta) => {
+    const section = meta.closest('.section');
+    [...meta.children].forEach((row) => {
+      const [keyCell, valueCell] = row.children;
+      if (!keyCell || !valueCell) return;
+      const key = toClassName(keyCell.textContent);
+      const value = valueCell.textContent.trim();
+      if (!key || !value) return;
+      if (key === 'style') {
+        value.split(',').map((s) => toClassName(s)).filter(Boolean)
+          .forEach((style) => section.classList.add(style));
+      } else {
+        section.dataset[toCamelCase(key)] = value;
+      }
+    });
+    const wrapper = meta.parentElement;
+    meta.remove();
+    if (wrapper !== section && !wrapper.children.length) wrapper.remove();
+  });
 }
 
 /**
@@ -151,6 +183,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }
@@ -160,7 +193,7 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = 'de';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {

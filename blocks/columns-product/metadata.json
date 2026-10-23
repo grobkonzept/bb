@@ -1,0 +1,16 @@
+{
+  "variantName": "columns-product",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": [
+    "Product teaser: ~55/45 split, eyebrow + large name, price line, full-width gold primary button and secondary arrow link."
+  ],
+  "contentPattern": [
+    "Product image beside product info (eyebrow, H2 name, price, description, delivery info, add-to-cart CTA, details link)"
+  ],
+  "options": [],
+  "memberVariantIds": ["columns-product"],
+  "usage": "One row with two cells. Cell 1: product image. Cell 2: eyebrow paragraph, H2 product name, price paragraph(s) starting with the currency (e.g. 'CHF 13.90'), description paragraphs, then a link-only paragraph for the main CTA and optional further link-only paragraphs for secondary links. Commerce is static: the CTA is a plain link to the product page.",
+  "reuseGuidance": "Reuse for any single featured product or offer teaser. For plain image + text rows without price or CTA use columns-alternating.",
+  "sourceUrl": "https://banditbunny.ch/"
+}

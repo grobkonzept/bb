@@ -1,0 +1,22 @@
+{
+  "variantName": "widget-contact",
+  "baseBlock": "widget",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": [
+    "A multi-field contact form: Name and E-Mail side by side from 750px, then a full-width Telefonnummer field, a 10-row Kommentar textarea and a left-aligned 'Senden' button. Visible labels, required fields marked with *."
+  ],
+  "contentPattern": [
+    "Contact form: Name, E-Mail*, Telefonnummer, Kommentar, 'Senden'"
+  ],
+  "options": [],
+  "memberVariantIds": [
+    "widget-contact"
+  ],
+  "usage": "Renders an accessible contact form locally (form aria-label 'Kontaktformular', visible labels, required attributes, inline German validation messages). It does not load /widgets/ assets and does not call Shopify. One row per field: cell 1 is the label, cell 2 the type (text | email | tel | textarea) with optional ', required'; missing type means text. Reserved config rows: submit (button label), success (message after submit), action (optional endpoint URL). IMPORTANT: without an 'action' row the form only validates in the browser and shows the success text; submissions are NOT sent anywhere until an action endpoint is configured. With 'action' the field values are POSTed as JSON (keys derived from the labels, e.g. 'e-mail') via fetch; a non-2xx response or network error shows a German error message. An empty block falls back to Name, E-Mail (required), Telefonnummer and Kommentar. Place it in a section with style 'narrow' below the page H1.",
+  "reuseGuidance": "Reuse for any simple multi-field form (contact, inquiry). Add an 'action' row once a real form endpoint exists. For a single email signup use widget-newsletter instead.",
+  "sourceUrl": "https://banditbunny.ch/pages/contact",
+  "openQuestions": [
+    "The source success message appears only after a Shopify submit and was not captured; the default text is a placeholder to confirm with the client.",
+    "No submission endpoint is configured yet; until an 'action' row is added, messages are discarded."
+  ]
+}

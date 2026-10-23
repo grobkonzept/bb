@@ -1,0 +1,16 @@
+{
+  "variantName": "columns-alternating",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": [
+    "Zig-zag rows of large image and vertically centered H2 + paragraph; differs from columns-product (no price/CTA, alternating sides, multiple rows)."
+  ],
+  "contentPattern": [
+    "Three image + text rows alternating sides (REBELLION, IDENTITÄT, GENUSS)"
+  ],
+  "options": [],
+  "memberVariantIds": ["columns-alternating"],
+  "usage": "One row per image/text pair. Put the cells in the order they should appear on desktop (image | text, then text | image, ...). The text cell holds an H2 and paragraphs. On mobile the image is always shown above the text.",
+  "reuseGuidance": "Reuse for brand-story or value sections with alternating image and text. For a product teaser with price and CTA use columns-product.",
+  "sourceUrl": "https://banditbunny.ch/"
+}

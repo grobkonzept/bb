@@ -1,0 +1,26 @@
+{
+  "variantName": "widget-newsletter",
+  "baseBlock": "widget",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": [
+    "Single outlined email field with inline arrow submit button, centered, max ~400px."
+  ],
+  "contentPattern": [
+    "Email signup (input + arrow submit)"
+  ],
+  "options": [],
+  "memberVariantIds": [
+    "widget-newsletter"
+  ],
+  "usage": "Renders a static email signup form locally; it does not load /widgets/ assets and does not call any Shopify or newsletter endpoint. Optional configuration as key/value rows (placeholder, submit, success, action) or as query params on a /widgets/newsletter/newsletter.html link. Without 'action' the form validates the email and shows the success message without leaving the page. Place it in a section with style 'centered' below an H2 and intro paragraph.",
+  "reuseGuidance": "Reuse for any single-field email signup. Add an 'action' row once a real newsletter provider endpoint exists.",
+  "sourceUrl": "https://banditbunny.ch/",
+  "usageTracking": {
+    "pagesUsing": [
+      "/index",
+      "/pages/contact"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-23"
+  }
+}

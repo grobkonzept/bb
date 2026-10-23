@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "bb": {
+      "previewOrg": "grobkonzept",
+      "previewSite": "bb",
+      "contentHostUrl": "https://content.da.live/grobkonzept/bb/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

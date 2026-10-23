@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://banditbunny.ch/pages/contact",
+  "path": "pages/contact",
+  "timestamp": "2026-10-23T09:35:50.404Z",
+  "title": "Kontakt – BANDIT BUNNY",
+  "template": "pages",
+  "blocks": [
+    "widget-contact",
+    "widget-contact",
+    "widget-newsletter"
+  ]
+}

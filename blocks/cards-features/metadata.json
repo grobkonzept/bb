@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-features",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": [
+    "Text-only, 3-up grid of dark-grey boxes with uppercase titles; no images."
+  ],
+  "contentPattern": [
+    "Three text-only feature boxes"
+  ],
+  "options": [],
+  "memberVariantIds": ["cards-features"],
+  "usage": "One row per feature box. Each row has a single cell with an H3 title and one or more paragraphs. An optional image cell may be added before the text cell.",
+  "reuseGuidance": "Reuse for short USP / benefit lists shown as equal boxes. For image-led teaser cards use the base cards block.",
+  "sourceUrl": "https://banditbunny.ch/"
+}

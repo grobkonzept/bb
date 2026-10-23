@@ -1,0 +1,16 @@
+{
+  "variantName": "hero-fullbleed",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": [
+    "720px full-bleed photo with dark overlay, heading and outlined button centered at the bottom (not vertically centered like vanilla hero)."
+  ],
+  "contentPattern": [
+    "Full-bleed background image with H2 and 'Zum Shop' CTA"
+  ],
+  "options": [],
+  "memberVariantIds": ["hero-fullbleed"],
+  "usage": "Use for a full-width banner at the top of a page where a heading and a single call to action sit over a photo. Row 1: background image. Row 2: heading (H1 or H2) and an optional link.",
+  "reuseGuidance": "Reuse for any photo banner with bottom-anchored centered text. If text must be vertically centered or left-aligned, consider the base hero block instead.",
+  "sourceUrl": "https://banditbunny.ch/"
+}

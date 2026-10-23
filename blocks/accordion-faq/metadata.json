@@ -1,0 +1,16 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": [
+    "Narrow centered FAQ list with check-mark icon before each question, caret on the right and thin separators."
+  ],
+  "contentPattern": [
+    "10 collapsible Q&A rows"
+  ],
+  "options": [],
+  "memberVariantIds": ["accordion-faq"],
+  "usage": "One row per question. Cell 1: the question as plain text. Cell 2: the answer (paragraphs, lists, links). Only one answer is open at a time. Place it in a section with style 'centered' and an H2 above it as default content.",
+  "reuseGuidance": "Reuse for any FAQ or collapsible Q&A list. The check-mark and caret icons are CSS-only, so no icon assets are needed.",
+  "sourceUrl": "https://banditbunny.ch/"
+}

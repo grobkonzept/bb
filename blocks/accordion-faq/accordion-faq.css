@@ -1,0 +1,76 @@
+.accordion-faq {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.accordion-faq details {
+  border-bottom: 1px solid currentcolor;
+}
+
+.accordion-faq details summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 40px 12px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion-faq details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* check-mark icon before each question */
+.accordion-faq details summary::before {
+  content: '\2713';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  border: 1px solid currentcolor;
+  box-sizing: border-box;
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* caret on the right */
+.accordion-faq details summary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  border: solid currentcolor;
+  border-width: 0 1px 1px 0;
+  transform: translateY(-75%) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.accordion-faq details[open] summary::after {
+  transform: translateY(-25%) rotate(-135deg);
+}
+
+.accordion-faq details.no-body summary {
+  cursor: default;
+}
+
+.accordion-faq details.no-body summary::after {
+  display: none;
+}
+
+.accordion-faq .accordion-faq-item-body {
+  padding: 0 0 16px 26px;
+}
+
+.accordion-faq .accordion-faq-item-body > :first-child {
+  margin-top: 0;
+}
+
+.accordion-faq .accordion-faq-item-body > :last-child {
+  margin-bottom: 0;
+}
