@@ -21,6 +21,8 @@ const DEFAULTS = {
 
 const KEYS = Object.keys(DEFAULTS);
 
+const ARROW_ICON = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546" clip-rule="evenodd"/></svg>';
+
 function normalizeKey(text) {
   return (text || '').trim().toLowerCase().replace(/[^a-z]/g, '');
 }
@@ -115,9 +117,10 @@ export default function decorate(block) {
   button.type = 'submit';
   button.className = 'widget-newsletter-submit';
   button.setAttribute('aria-label', config.submit);
-  button.innerHTML = '<span aria-hidden="true">&#8594;</span>';
+  button.innerHTML = ARROW_ICON;
 
-  field.append(input, button);
+  // input before label so CSS can float the label (input:focus ~ label)
+  field.append(input, label, button);
 
   const status = document.createElement('p');
   status.className = 'widget-newsletter-status';
@@ -125,7 +128,7 @@ export default function decorate(block) {
   status.setAttribute('role', 'status');
   status.setAttribute('aria-live', 'polite');
 
-  form.append(label, field, status);
+  form.append(field, status);
 
   form.addEventListener('submit', (e) => {
     if (!input.checkValidity()) {

@@ -1,50 +1,127 @@
+/* Source: Shopify Dawn multirow (image-with-text rows), banditbunny.ch */
+
+/* source section has no vertical padding */
+main > .section.columns-alternating-container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.columns-alternating {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .columns-alternating > .columns-alternating-row {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.columns-alternating > .columns-alternating-row + .columns-alternating-row {
-  margin-top: 48px;
 }
 
 .columns-alternating .columns-alternating-media {
+  position: relative;
   order: 0;
+  min-height: 296px;
+  overflow: hidden;
+  background-color: var(--background-color);
   line-height: 0;
 }
 
+.columns-alternating .columns-alternating-media picture {
+  display: block;
+  height: 100%;
+}
+
 .columns-alternating .columns-alternating-media img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  max-width: 100%;
   object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .columns-alternating .columns-alternating-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   order: 1;
+  padding: 40px 0 50px;
+  text-align: left;
 }
 
-.columns-alternating .columns-alternating-text > :first-child {
-  margin-top: 0;
+.columns-alternating .columns-alternating-text > * {
+  margin: 0;
 }
 
-.columns-alternating .columns-alternating-text > :last-child {
-  margin-bottom: 0;
+.columns-alternating .columns-alternating-text > * + * {
+  margin-top: 20px;
 }
 
-@media (width >= 900px) {
+.columns-alternating .columns-alternating-text h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
+  color: var(--heading-color);
+}
+
+.columns-alternating .columns-alternating-text p {
+  font-size: var(--body-font-size-m);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+  color: var(--text-color);
+}
+
+@media (width >= 750px) {
+  .columns-alternating {
+    gap: 8px;
+  }
+
   .columns-alternating > .columns-alternating-row {
     flex-direction: row;
-    align-items: center;
-    gap: 48px;
   }
 
-  .columns-alternating > .columns-alternating-row + .columns-alternating-row {
-    margin-top: 64px;
-  }
-
-  .columns-alternating .columns-alternating-row > div {
-    flex: 1;
+  .columns-alternating > .columns-alternating-row > div {
+    box-sizing: border-box;
+    flex: 0 0 50%;
+    min-width: 0;
+    max-width: 50%;
     order: unset;
+  }
+
+  .columns-alternating > .columns-alternating-row.single > div {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .columns-alternating .columns-alternating-media {
+    min-height: 460px;
+  }
+
+  .columns-alternating .columns-alternating-text {
+    padding: 40px 0 50px 40px;
+  }
+
+  .columns-alternating .media-end .columns-alternating-text {
+    padding: 40px 40px 50px 0;
+  }
+
+  .columns-alternating .single .columns-alternating-text,
+  .columns-alternating .no-media .columns-alternating-text {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (width >= 990px) {
+  .columns-alternating .columns-alternating-text {
+    padding: 60px 0 70px 70px;
+  }
+
+  .columns-alternating .media-end .columns-alternating-text {
+    padding: 60px 70px 70px 0;
   }
 }

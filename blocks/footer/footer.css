@@ -1,20 +1,94 @@
+/* footer: payment icons row + copyright / policy links row (source: Shopify Dawn footer__content-bottom) */
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  border-top: 1px solid var(--divider-color);
+  padding: 4px 0 28px;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer-inner {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 30px var(--content-padding) 0;
 }
 
-footer .footer p {
+footer .footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* payment icons */
+footer .footer-icons {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+footer .footer .footer-icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -5px 0;
+}
+
+footer .footer-icons-list li {
+  display: flex;
+  padding: 5px;
+}
+
+footer .footer-icons-list img {
+  display: block;
+  width: 38px;
+  height: 24px;
+}
+
+/* copyright + policy links */
+footer .footer-legal {
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.7px;
+}
+
+footer .footer-legal-text,
+footer .footer-legal-links,
+footer .footer-legal-links li {
+  display: inline;
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
+footer .footer-legal-text,
+footer .footer-legal-links a {
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+footer .footer-legal-links li::before {
+  content: '\00B7';
+  padding: 0 8px;
+}
+
+footer .footer-legal a:any-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+footer .footer-legal a:hover {
+  color: var(--heading-color);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }

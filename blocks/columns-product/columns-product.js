@@ -1,6 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 const PRICE_RE = /^(CHF|EUR|USD|Fr\.?|€|\$|£)\s?\d|\d[\d'.,]*\s?(CHF|EUR|USD|€|\$|£)/i;
+const TAX_RE = /steuer|mwst|versand|tax|shipping|vat/i;
 
 function isImageCell(cell) {
   const pic = cell.querySelector('picture');
@@ -38,6 +39,13 @@ function decorateInfo(info) {
       p.classList.add('columns-product-price');
     }
   });
+
+  // tax / shipping note: the short paragraph right after the price lines
+  const prices = info.querySelectorAll(':scope > .columns-product-price');
+  const afterPrice = prices.length ? prices[prices.length - 1].nextElementSibling : null;
+  if (afterPrice && afterPrice.tagName === 'P' && TAX_RE.test(afterPrice.textContent)) {
+    afterPrice.classList.add('columns-product-tax');
+  }
 
   // link-only paragraphs: first is the primary CTA, the rest are secondary links
   const linkParas = [...info.querySelectorAll(':scope > p')].filter(isLinkOnly);

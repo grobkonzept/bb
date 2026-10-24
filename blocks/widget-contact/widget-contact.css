@@ -1,4 +1,4 @@
-/* structural styles only; visual design comes in the design pass */
+/* widget-contact: Dawn-style outlined fields with floating labels (source: banditbunny.ch/pages/contact) */
 .widget-contact .widget-contact-intro > :first-child {
   margin-top: 0;
 }
@@ -10,53 +10,124 @@
 .widget-contact .widget-contact-fields {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 15px 20px;
 }
 
 .widget-contact .widget-contact-field {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 4px;
   min-width: 0;
 }
 
+/* label sits inside the field and floats up on focus / when filled */
 .widget-contact .widget-contact-label {
-  font-size: var(--body-font-size-s, 16px);
+  position: absolute;
+  top: 11px;
+  left: 21px;
+  z-index: 1;
+  max-width: calc(100% - 42px);
+  margin: 0;
+  overflow: hidden;
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  transition: top 0.1s ease, font-size 0.1s ease, letter-spacing 0.1s ease;
 }
 
+.widget-contact .widget-contact-field:has(.widget-contact-control:focus) .widget-contact-label,
+.widget-contact .widget-contact-field:has(.widget-contact-control:not(:placeholder-shown)) .widget-contact-label {
+  top: 6px;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+}
+
+/* separate rule: an unsupported :autofill must not invalidate the rule above */
+.widget-contact .widget-contact-field:has(.widget-contact-control:autofill) .widget-contact-label {
+  top: 6px;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+}
+
+/* 1px ring at 55% white, 2px on hover, solid white 2px on focus */
 .widget-contact .widget-contact-control {
   box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding: 12px 16px;
-  border: 1px solid currentcolor;
+  width: calc(100% - 2px);
+  height: 45px;
+  margin: 1px;
+  border: 0;
   border-radius: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
+  padding: 15px;
+  background-color: var(--background-color);
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.4px;
+  text-align: left;
+  appearance: none;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 55%);
+  transition: box-shadow 0.1s ease;
+}
+
+.widget-contact .widget-contact-control::placeholder {
+  opacity: 0;
+}
+
+.widget-contact .widget-contact-control:hover {
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 55%);
+}
+
+.widget-contact .widget-contact-control:focus,
+.widget-contact .widget-contact-control:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--heading-color);
+}
+
+.widget-contact .widget-contact-control:focus,
+.widget-contact .widget-contact-control:not(:placeholder-shown) {
+  padding: 22px 15px 8px 20px;
+}
+
+.widget-contact .widget-contact-control:autofill {
+  padding: 22px 15px 8px 20px;
 }
 
 .widget-contact textarea.widget-contact-control {
-  resize: vertical;
+  display: block;
+  min-height: 100px;
+  resize: none;
 }
 
-.widget-contact .widget-contact-control:focus-visible {
-  outline: 2px solid currentcolor;
-  outline-offset: 2px;
-}
-
+/* validation */
 .widget-contact .widget-contact-field.invalid .widget-contact-control {
-  border-color: #d00;
+  box-shadow: 0 0 0 1px #d00;
+}
+
+.widget-contact .widget-contact-field.invalid .widget-contact-control:hover,
+.widget-contact .widget-contact-field.invalid .widget-contact-control:focus {
+  box-shadow: 0 0 0 2px #d00;
 }
 
 .widget-contact .widget-contact-error,
 .widget-contact .widget-contact-status {
   margin: 0;
-  font-size: var(--body-font-size-xs, 14px);
+  color: var(--heading-color);
+  font-size: var(--body-font-size-xs);
+  line-height: 1.5;
+}
+
+.widget-contact .widget-contact-error {
+  margin-top: 10px;
 }
 
 .widget-contact .widget-contact-status {
-  margin-top: 16px;
+  margin-top: 20px;
+  font-size: var(--body-font-size-m);
 }
 
 .widget-contact .widget-contact-error:empty,
@@ -64,23 +135,18 @@
   display: none;
 }
 
-.widget-contact .widget-contact-field.invalid .widget-contact-error,
-.widget-contact .widget-contact-status.error {
-  color: #d00;
-}
-
+/* submit: gold primary button from global styles, left-aligned */
 .widget-contact .widget-contact-actions {
   display: flex;
   justify-content: flex-start;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
-.widget-contact .widget-contact-submit {
+main .widget-contact button.widget-contact-submit {
   margin: 0;
-  cursor: pointer;
 }
 
-.widget-contact .widget-contact-submit:disabled {
+main .widget-contact button.widget-contact-submit:disabled {
   cursor: progress;
   opacity: 0.6;
 }
@@ -88,9 +154,14 @@
 @media (width >= 750px) {
   .widget-contact .widget-contact-fields {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
   .widget-contact .widget-contact-field-full {
     grid-column: 1 / -1;
+  }
+
+  .widget-contact .widget-contact-actions {
+    margin-top: 40px;
   }
 }

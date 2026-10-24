@@ -27,7 +27,7 @@
   --body-line-height: 1.8;
 
   /* heading sizes (mobile) */
-  --heading-font-size-xxl: 36px;
+  --heading-font-size-xxl: 40px;
   --heading-font-size-xl: 30px;
   --heading-font-size-l: 17px;
   --heading-font-size-m: 16px;
@@ -49,8 +49,14 @@
   --button-border-width-hover: 2px;
   --button-transition: box-shadow 0.1s ease;
 
-  /* nav height */
-  --nav-height: 64px;
+  /* nav height: announcement bar + main header row */
+  --nav-height: 157px;
+}
+
+@media (width >= 900px) {
+  :root {
+    --nav-height: 153px;
+  }
 }
 
 @media (width >= 750px) {
@@ -61,7 +67,7 @@
     --body-font-size-xs: 12px;
 
     /* heading sizes */
-    --heading-font-size-xxl: 40px;
+    --heading-font-size-xxl: 52px;
     --heading-font-size-xl: 40px;
     --heading-font-size-l: 18px;
     --heading-font-size-m: 17px;

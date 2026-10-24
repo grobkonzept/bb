@@ -43,5 +43,15 @@ export default function decorate(block) {
     });
   });
 
+  // standalone CTA links render as the secondary (outline) button, unless authored otherwise
+  content.querySelectorAll(':scope > p').forEach((p) => {
+    const links = p.querySelectorAll('a[href]');
+    if (links.length !== 1 || p.textContent.trim() !== links[0].textContent.trim()) return;
+    const a = links[0];
+    if (a.querySelector('img')) return;
+    p.classList.add('button-wrapper');
+    if (!a.classList.contains('button')) a.classList.add('button', 'secondary');
+  });
+
   block.replaceChildren(...(media.children.length ? [media] : []), content);
 }

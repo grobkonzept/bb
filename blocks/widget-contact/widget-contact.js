@@ -221,6 +221,8 @@ function buildField(field, prefix, usedNames) {
     if (field.type === 'tel') control.inputMode = 'tel';
   }
   control.className = 'widget-contact-control';
+  // The placeholder is hidden by CSS; it only drives the :placeholder-shown floating label.
+  control.placeholder = field.label;
   control.id = id;
   control.name = name;
   control.required = field.required;
@@ -281,7 +283,7 @@ export default function decorate(block) {
   actions.className = 'widget-contact-actions';
   const button = document.createElement('button');
   button.type = 'submit';
-  button.className = 'button widget-contact-submit';
+  button.className = 'button primary widget-contact-submit';
   button.textContent = config.submit;
   actions.append(button);
 

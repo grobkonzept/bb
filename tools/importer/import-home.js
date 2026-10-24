@@ -108,7 +108,7 @@ const PAGE_TEMPLATE = {
         ".shopify-section[id$=\"__rich_text_8iPBAc\"]",
         "#shopify-section-template--27651724017997__rich_text_8iPBAc"
       ],
-      "style": null,
+      "style": "rich-text",
       "blocks": [],
       "defaultContent": [
         ".rich-text__blocks"
@@ -165,7 +165,7 @@ const PAGE_TEMPLATE = {
         ".shopify-section[id$=\"__rich_text_XLTFNU\"]",
         "#shopify-section-template--27651724017997__rich_text_XLTFNU"
       ],
-      "style": "centered",
+      "style": "centered, rich-text",
       "blocks": [],
       "defaultContent": [
         ".rich-text__blocks"

@@ -1,61 +1,103 @@
-.hero-fullbleed-container .hero-fullbleed-wrapper {
-  max-width: unset;
+/* full-bleed: the hero section has no section padding and no content max-width on the source */
+main > .section.hero-fullbleed-container {
   padding: 0;
 }
 
+main > .section.hero-fullbleed-container > .hero-fullbleed-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+/* mobile (source: banner 390px tall, content vertically centered) */
 .hero-fullbleed {
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  min-height: 420px;
-  padding: 40px 24px;
+  justify-content: center;
+  min-height: 390px;
   overflow: hidden;
   box-sizing: border-box;
+  color: var(--text-color);
   text-align: center;
+}
+
+/* dark overlay: rgb(0 0 0) at 0.2 opacity above the image */
+.hero-fullbleed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgb(0 0 0 / 20%);
+  pointer-events: none;
 }
 
 .hero-fullbleed .hero-fullbleed-media {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-color: rgb(255 255 255 / 10%);
 }
 
-.hero-fullbleed .hero-fullbleed-media picture,
+.hero-fullbleed .hero-fullbleed-media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero-fullbleed .hero-fullbleed-media img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* overlay to keep text legible over the photo */
-.hero-fullbleed .hero-fullbleed-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgb(0 0 0 / 40%);
-}
-
 .hero-fullbleed .hero-fullbleed-content {
   position: relative;
-  z-index: 1;
-  max-width: 1200px;
+  z-index: 2;
+  box-sizing: border-box;
   width: 100%;
+  padding: 40px 15px;
 }
 
 .hero-fullbleed .hero-fullbleed-content > :first-child {
   margin-top: 0;
 }
 
+.hero-fullbleed .hero-fullbleed-content > :last-child {
+  margin-bottom: 0;
+}
+
+.hero-fullbleed h1,
+.hero-fullbleed h2 {
+  margin: 0;
+  color: var(--heading-color);
+}
+
+.hero-fullbleed p.button-wrapper {
+  margin: 20px 0 0;
+}
+
 .hero-fullbleed.no-image {
   min-height: unset;
 }
 
-@media (width >= 900px) {
+.hero-fullbleed.no-image::after {
+  content: none;
+}
+
+/* desktop (source breakpoint 750px): 720px tall, content anchored bottom-center */
+@media (width >= 750px) {
   .hero-fullbleed {
+    align-items: flex-end;
     min-height: 720px;
-    padding: 56px 32px;
+    padding: 50px;
+  }
+
+  .hero-fullbleed .hero-fullbleed-content {
+    width: auto;
+    max-width: 890px;
+    padding: 40px 0;
   }
 }

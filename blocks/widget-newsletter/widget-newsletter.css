@@ -1,6 +1,8 @@
+/* widget-newsletter: values from source computed styles (Shopify Dawn newsletter form) */
 .widget-newsletter {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 360px;
+  margin: 20px auto 0;
+  color: var(--text-color);
 }
 
 .widget-newsletter .widget-newsletter-intro > :first-child {
@@ -8,69 +10,167 @@
 }
 
 .widget-newsletter .widget-newsletter-form {
+  position: relative;
+  width: 100%;
   margin: 0;
 }
 
-/* visually hidden label (placeholder shows the hint) */
-.widget-newsletter .widget-newsletter-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
+/* field: 1px ring drawn by ::after, grows to 2px on hover */
 .widget-newsletter .widget-newsletter-field {
   position: relative;
+  z-index: 0;
   display: flex;
-  align-items: stretch;
-  border: 1px solid currentcolor;
+  width: 100%;
+  transition: box-shadow 0.1s ease;
+}
+
+.widget-newsletter .widget-newsletter-field::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: 1;
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 55%);
+  transition: box-shadow 0.1s ease;
+  pointer-events: none;
+}
+
+.widget-newsletter .widget-newsletter-field:hover::after {
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 55%);
 }
 
 .widget-newsletter .widget-newsletter-field input {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-  padding: 12px 16px;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-}
-
-.widget-newsletter .widget-newsletter-field input:focus {
-  outline: none;
-}
-
-.widget-newsletter .widget-newsletter-field:focus-within {
-  outline: 2px solid currentcolor;
-  outline-offset: 2px;
-}
-
-.widget-newsletter .widget-newsletter-submit {
-  flex: 0 0 auto;
-  margin: 0;
-  padding: 0 16px;
+  position: relative;
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 100%;
+  height: 45px;
+  min-width: 72px;
+  min-height: 2px;
+  margin: 1px;
+  padding: 15px 50px 15px 15px;
   border: 0;
   border-radius: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
+  appearance: none;
+  background-color: var(--background-color);
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+  text-align: left;
+  transition: box-shadow 0.1s ease;
+}
+
+.widget-newsletter .widget-newsletter-field input::placeholder {
+  opacity: 0;
+}
+
+.widget-newsletter .widget-newsletter-field input:focus,
+.widget-newsletter .widget-newsletter-field input:focus-visible {
+  outline: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 2px var(--heading-color);
+}
+
+.widget-newsletter .widget-newsletter-field input:focus,
+.widget-newsletter .widget-newsletter-field input:not(:placeholder-shown),
+.widget-newsletter .widget-newsletter-field input:autofill {
+  padding: 22px 50px 8px 20px;
+}
+
+/* floating label */
+.widget-newsletter .widget-newsletter-label {
+  position: absolute;
+  top: 11px;
+  left: 21px;
+  margin: 0;
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  pointer-events: none;
+  transition: top 0.1s ease, font-size 0.1s ease;
+}
+
+.widget-newsletter .widget-newsletter-field input:focus ~ .widget-newsletter-label,
+.widget-newsletter .widget-newsletter-field input:not(:placeholder-shown) ~ .widget-newsletter-label,
+.widget-newsletter .widget-newsletter-field input:autofill ~ .widget-newsletter-label {
+  top: 6px;
+  left: 21px;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+}
+
+/* arrow submit */
+.widget-newsletter .widget-newsletter-submit {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background-color: transparent;
+  color: currentcolor;
   cursor: pointer;
+}
+
+.widget-newsletter .widget-newsletter-submit svg {
+  display: block;
+  width: 15px;
+  height: 25px;
+}
+
+.widget-newsletter .widget-newsletter-submit:focus-visible {
+  outline: 0;
+  background-color: var(--background-color);
+  box-shadow: 0 0 0 3px var(--background-color), 0 0 0 4px var(--heading-color);
 }
 
 .widget-newsletter .widget-newsletter-status {
   min-height: 1.5em;
-  margin: 8px 0 0;
-  font-size: var(--body-font-size-xs, 14px);
+  margin: 15px 0 0;
+  font-size: var(--body-font-size-s);
+  text-align: center;
 }
 
 .widget-newsletter .widget-newsletter-status:empty {
-  margin: 0;
   min-height: 0;
+  margin: 0;
 }
 
-.widget-newsletter .widget-newsletter-form.invalid .widget-newsletter-field {
-  border-color: #d00;
+.widget-newsletter .widget-newsletter-form.invalid .widget-newsletter-field::after {
+  box-shadow: 0 0 0 1px #d00;
+}
+
+/* autofill paints a light background: switch label and arrow to dark */
+.widget-newsletter .widget-newsletter-field input:autofill ~ .widget-newsletter-label,
+.widget-newsletter .widget-newsletter-field input:autofill ~ .widget-newsletter-submit {
+  color: rgb(0 0 0);
+}
+
+/* source newsletter wrapper: 40px side inset on mobile, intro text max 700px */
+main > .section.widget-newsletter-container > .default-content-wrapper {
+  padding: 0 40px;
+}
+
+main > .section.widget-newsletter-container > .default-content-wrapper p {
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+@media (width >= 750px) {
+  main > .section.widget-newsletter-container > .default-content-wrapper {
+    padding: 0 var(--content-padding);
+  }
 }

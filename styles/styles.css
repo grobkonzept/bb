@@ -64,7 +64,15 @@ h6 {
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
+h1 {
+  margin-bottom: 30px;
+  font-size: var(--heading-font-size-xxl);
+}
+
+@media (width >= 750px) {
+  h1 { margin-bottom: 40px; }
+}
+
 h2 { font-size: var(--heading-font-size-xl); }
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
@@ -126,7 +134,7 @@ a:focus-visible {
 
 /* buttons: reset, then source variants (square, 1px ring that grows to 2px on hover) */
 p.button-wrapper {
-  margin: 24px 0 0;
+  margin: 20px 0 0;
 }
 
 main .button-container {
@@ -230,7 +238,9 @@ main > .section {
   padding: var(--section-padding-top) 0 var(--section-padding-bottom);
 }
 
+/* like the source .page-width: max-width includes the side padding (1100px content) */
 main > .section > div {
+  box-sizing: border-box;
   max-width: var(--content-max-width);
   margin: auto;
   padding: 0 var(--content-padding);
@@ -255,5 +265,25 @@ main .section.centered > .default-content-wrapper {
 }
 
 main .section.narrow > div {
-  max-width: 726px;
+  max-width: calc(726px + 2 * var(--content-padding));
+}
+
+/* rich text column (source .rich-text__blocks: 780px, extra 20px inset on mobile) */
+main .section.rich-text > .default-content-wrapper {
+  max-width: calc(780px + 2 * var(--content-padding));
+  padding: 0 calc(var(--content-padding) + 20px);
+}
+
+main .section.rich-text > .default-content-wrapper h2 {
+  margin-bottom: 20px;
+}
+
+main .section.rich-text > .default-content-wrapper p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 750px) {
+  main .section.rich-text > .default-content-wrapper {
+    padding: 0 var(--content-padding);
+  }
 }
